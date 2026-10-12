@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cassiemarie0728.github.io/the-last-daughter/sitemap.xml
