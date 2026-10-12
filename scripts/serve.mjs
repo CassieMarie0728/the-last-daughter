@@ -1,0 +1,6 @@
+import http from 'node:http';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+const root=path.resolve(import.meta.dirname,'../dist');
+const mime={'.html':'text/html; charset=utf-8','.css':'text/css','.js':'text/javascript','.webp':'image/webp','.jpg':'image/jpeg','.svg':'image/svg+xml','.woff2':'font/woff2','.txt':'text/plain','.xml':'application/xml'};
+http.createServer(async(req,res)=>{try{let p=decodeURIComponent(new URL(req.url,'http://localhost').pathname);if(p==='/'){res.writeHead(302,{Location:'/the-last-daughter/'});res.end();return;}if(!p.startsWith('/the-last-daughter/'))throw new Error('Not found');p=p.slice('/the-last-daughter/'.length);let file=path.resolve(root,p||'.');if(!file.startsWith(root+path.sep)&&file!==root)throw new Error('Invalid path');const stat=await fs.stat(file);if(stat.isDirectory())file=path.join(file,'index.html');const body=await fs.readFile(file);res.writeHead(200,{'Content-Type':mime[path.extname(file)]||'application/octet-stream'});res.end(body);}catch{res.writeHead(404,{'Content-Type':'text/html'});res.end(await fs.readFile(path.join(root,'404.html')));}}).listen(4173,'127.0.0.1',()=>console.log('Preview: http://127.0.0.1:4173/the-last-daughter/'));

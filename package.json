@@ -1,0 +1,32 @@
+{
+  "name": "the-last-daughter",
+  "version": "1.0.0",
+  "description": "The Embercrest Awakening official book website",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "node scripts/validate.mjs",
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/serve.mjs",
+    "test:browser": "node scripts/browser-qa.mjs",
+    "publish:pages": "node scripts/publish.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CassieMarie0728/the-last-daughter.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/CassieMarie0728/the-last-daughter/issues"
+  },
+  "homepage": "https://github.com/CassieMarie0728/the-last-daughter#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.64.0",
+    "sharp": "^0.35.5"
+  },
+  "private": true,
+  "license": "UNLICENSED"
+}
